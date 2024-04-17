@@ -2,11 +2,28 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
     width: 100%;
     color: black;
+    background-color: #ececec;
+}
+
+.menu-header{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 10px #000000;
+}
+
+.menu-header h1:hover{
+    cursor: pointer;
 }
 
 main{
@@ -31,10 +48,11 @@ main{
 }
 
 .menu-item{
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: solid 1px black;
+    box-shadow: 0 5px 10px #00000088;
     border-radius: 10px;
     padding: 20px;
 }
@@ -45,8 +63,14 @@ main{
     gap: 1em;
 }
 
-.menu-item-image{
+.menu-item-image-container{
+    width: 200px;
+    height: 100%;
+}
 
+.menu-item-image{
+    width: 100%;
+    height: 100%;
 }
 
 .menu-item-name-description{
@@ -64,9 +88,41 @@ main{
 
 }
 
+.menu-item-price-edit-delete{
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+}
+
 .menu-item-price{
     display: flex;
     flex-direction: column;
     justify-content: start;
     font-weight: 600;
+}
+
+.menu-item-edit-delete{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:1em;
+}
+
+.menu-item-edit-delete button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Item form */
+
+.item-form{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.item-form-component{
+    display: flex;
+    flex-direction: column;
 }
