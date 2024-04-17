@@ -11,10 +11,8 @@ class Menu extends Model
     protected $table = 'menu';
 
     protected $fillable = [
-        'naam' => 'required|max:255',
-        'beschrijving' => 'required',
-        'prijs' => 'required|numeric',
-        'afbeelding' => 'sometimes|image|max:1024',
-        'categorie' => 'required',
+        'naam',
+        'beschrijving',
+        'prijs',
     ];
 }

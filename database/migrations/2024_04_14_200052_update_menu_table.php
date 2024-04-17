@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('menu', function (Blueprint $table) {
             $table->string('afbeelding')->nullable();
-            $table->string('categorie')->nullable();
+            $table->boolean('categorie')->nullable();
         });
     }
 

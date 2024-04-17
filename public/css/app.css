@@ -7,7 +7,6 @@
 body{
     width: 100%;
     color: black;
-    background-color: #f4f4f4;
 }
 
 main{
@@ -65,41 +64,9 @@ main{
 
 }
 
-.menu-item-price-edit-delete{
-    display: flex;
-    flex-direction: row;
-    gap: 3em;
-}
-
 .menu-item-price{
     display: flex;
     flex-direction: column;
     justify-content: start;
     font-weight: 600;
-}
-
-.menu-item-edit-delete{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap:1em;
-}
-
-.menu-item-edit-delete button{
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-/* Item form */
-
-.item-form{
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-}
-
-.item-form-component{
-    display: flex;
-    flex-direction: column;
 }
