@@ -18,17 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', MenuController::class .'@index')->name('menu.index');
 // returns the form for adding a post
-Route::get('/posts/create', MenuController::class . '@create')->name('menu.create');
-// adds a post to the database
-Route::post('/posts', MenuController::class .'@store')->name('menu.store');
-// returns a page that shows a full post
-Route::get('/posts/{post}', MenuController::class .'@show')->name('menu.show');
-// returns the form for editing a post
-Route::get('/posts/{post}/edit', MenuController::class .'@edit')->name('menu.edit');
-// updates a post
-Route::put('/posts/{post}', MenuController::class .'@update')->name('menu.update');
-// deletes a post
-Route::delete('/posts/{post}', MenuController::class .'@destroy')->name('menu.destroy');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/menu/create', [MenuController::class, 'create'])->name('menu.create');
+    Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+    Route::get('/menu/{post}', [MenuController::class, 'show'])->name('menu.show');
+    Route::get('/menu/{item}/edit', [MenuController::class, 'edit'])->name('menu.edit');
+    Route::put('/menu/{item}', [MenuController::class, 'update'])->name('menu.update');
+    Route::delete('/menu/{item}', [MenuController::class, 'destroy'])->name('menu.destroy');
+});
 
 Route::get('/home', [HomeController::class,'index'])->middleware('auth')->name('home');
 

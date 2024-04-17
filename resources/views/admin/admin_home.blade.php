@@ -11,6 +11,12 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
+                <div>
+                    <button onclick="location.href='{{ route('menu.create') }}'">Item toevoegen</button>
+                </div>
+                <div>
+                    <button onclick="location.href='{{ route('menu.index') }}'">Items bekijken</button>
+                </div>
             </div>
         </div>
     </div>

@@ -41,6 +41,11 @@ main{
     gap: 3em
 }
 
+.menu-container-title{
+    font-size: 18pt;
+    font-weight: 600;
+}
+
 .menu-items{
     display: flex;
     flex-direction: column;
