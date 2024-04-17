@@ -9,12 +9,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    {{ __("You're logged in as Admin!") }}
                 </div>
-                <div>
-                    <button onclick="location.href='{{ route('menu.create') }}'">Item toevoegen</button>
+                <div class="p-6 text-gray-900">
+                    <button class="menu-button" onclick="location.href='{{ route('menu.create') }}'">Item toevoegen</button>
                 </div>
-                <div>
+                <div class="p-6 text-gray-900">
                     <button onclick="location.href='{{ route('menu.index') }}'">Items bekijken</button>
                 </div>
             </div>

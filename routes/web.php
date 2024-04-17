@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', MenuController::class .'@index')->name('menu.index');
+Route::get('/', [MenuController::class, 'main'])->name('home.main');
 // returns the form for adding a post
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/menu/items', [MenuController::class, 'index'])->name('menu.index');
     Route::get('/menu/create', [MenuController::class, 'create'])->name('menu.create');
     Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
     Route::get('/menu/{post}', [MenuController::class, 'show'])->name('menu.show');

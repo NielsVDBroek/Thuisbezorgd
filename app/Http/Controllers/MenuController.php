@@ -11,7 +11,14 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    
+     public function main()
+     {
+         $menuItems = Menu::all();
+         return view('home.main', compact('menuItems'));
+     }
+     
+     public function index()
     {
         $menuItems = Menu::all();
         return view('menu.index', compact('menuItems'));
