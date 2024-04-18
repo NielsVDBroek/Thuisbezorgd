@@ -20,7 +20,7 @@
             <div class="menu-container-title">Menu Items</div>
             <div class="menu-items">
                 @foreach($menuItems as $item)
-                    <div class="menu-item">
+                    <div class="menu-item shadow-sm">
                         <div class="menu-item-image-name-description">
                             <div class="menu-item-image-container">
                                 <img src="{{ asset('storage/' . $item->afbeelding) }}" alt="Menu Image">

@@ -57,7 +57,6 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    box-shadow: 0 5px 10px #00000024;
     border-radius: 10px;
     padding: 20px;
 }
@@ -161,9 +160,27 @@ main{
     display: flex;
     flex-direction: column;
     gap: 3em;
+    width: 75%;
 }
 
 .message-item{
     display:flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    gap: 2em
+}
+
+.message-item-user-info{
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+}
+
+.message-item-message-content{
+    display: flex;
     flex-direction: column;
 }

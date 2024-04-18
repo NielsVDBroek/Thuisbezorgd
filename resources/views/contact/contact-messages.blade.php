@@ -18,22 +18,26 @@
     <main>
         <div class="message-items">
             @foreach($messages as $message)
-                <div class="message-item">
-                    <div>
-                        <div>Naam:</div>
-                        <div>{{ $message->name }}</div>
+                <div class="message-item shadow-sm">
+                    <div class="message-item-user-info">
+                        <div>
+                            <div>Naam:</div>
+                            <div>{{ $message->name }}</div>
+                        </div>
+                        <div>
+                            <div>E-mail:</div>
+                            <div>{{ $message->email }}</div>
+                        </div>
                     </div>
-                    <div>
-                        <div>E-mail:</div>
-                        <div>{{ $message->email }}</div>
-                    </div>
-                    <div>
-                        <div>Onderwerp:</div>
+                    <div class="message-item-message-content">
+                        <div>
+                            <div>Onderwerp:</div>
                         <div>{{ $message->title }}</div>
-                    </div>
-                    <div>
-                        <div>Bericht:</div>
+                        </div>
+                        <div>
+                            <div>Bericht:</div>
                         <div>{{ $message->message }}</div>
+                        </div>
                     </div>
                     <form action="{{ route('contact.destroy', $message->id) }}" method="post">
                         @csrf
