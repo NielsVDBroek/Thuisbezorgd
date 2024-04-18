@@ -23,7 +23,7 @@
                     <div class="menu-item">
                         <div class="menu-item-image-name-description">
                             <div class="menu-item-image-container">
-                                {{-- Help nodig met ophalen image --}}
+                                <img src="{{ asset('storage/' . $item->afbeelding) }}" alt="Menu Image">
                             </div>
                             <div class="menu-item-name-description">
                                 <div class="menu-item-name">

@@ -14,7 +14,7 @@ class Menu extends Model
         'naam' => 'required|max:255',
         'beschrijving' => 'required',
         'prijs' => 'required|numeric',
-        'afbeelding' => 'sometimes|image|max:1024',
+        'afbeelding' => 'required|image|max:1024',
         'categorie' => 'required',
     ];
 }

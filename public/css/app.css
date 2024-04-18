@@ -35,7 +35,7 @@ main{
 }
 
 .menu-container{
-    width: 50%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     gap: 3em
@@ -140,4 +140,30 @@ main{
 
 .menu-button{
     color: red;
+}
+
+/* Contact form */
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+}
+
+.contact-form-input-field{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Displaying messages */
+
+.message-items{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.message-item{
+    display:flex;
+    flex-direction: column;
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactMessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/menu/{item}/edit', [MenuController::class, 'edit'])->name('menu.edit');
     Route::put('/menu/{item}', [MenuController::class, 'update'])->name('menu.update');
     Route::delete('/menu/{item}', [MenuController::class, 'destroy'])->name('menu.destroy');
+    Route::get('contact/messages', [ContactMessageController::class, 'index'])->name('contact.contact-messages');
+    Route::delete('contact/messages/{id}', [ContactMessageController::class, 'destroy'])->name('contact.destroy');
+
+
 });
 
 Route::get('/home', [HomeController::class,'index'])->middleware('auth')->name('home');
@@ -35,5 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('contact', [ContactMessageController::class, 'create'])->name('contact.create');
+Route::post('contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
 require __DIR__.'/auth.php';

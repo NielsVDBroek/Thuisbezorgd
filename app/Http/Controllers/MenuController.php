@@ -93,30 +93,29 @@ class MenuController extends Controller
         'beschrijving' => 'required|string',
         'prijs' => 'required|numeric|min:0',
         'categorie' => 'required|string|max:255',
-        'afbeelding' => 'required|image|mimes:jpg,jpeg,png,bmp|max:1024', // Always required
+        'afbeelding' => 'sometimes|image|mimes:jpg,jpeg,png,bmp|max:1024', // Make image upload optional
     ]);
 
     // Find the existing menu item
     $menuItem = Menu::findOrFail($id);
 
-    // Update model with validated data, except for image
+    // Update model with validated data
     $menuItem->naam = $validatedData['naam'];
     $menuItem->beschrijving = $validatedData['beschrijving'];
     $menuItem->prijs = $validatedData['prijs'];
     $menuItem->categorie = $validatedData['categorie'];
 
-    // Handle the image file and store the new path
-    // Delete old image if exists
-    if ($menuItem->afbeelding) {
-        $oldPath = str_replace('app/public/', '', $menuItem->afbeelding); // Remove the prepended path to get the relative storage path
-        if (Storage::disk('public')->exists($oldPath)) {
-            Storage::disk('public')->delete($oldPath);
+    // Handle the image file if it's present in the request
+    if ($request->hasFile('afbeelding')) {
+        // Delete old image if exists
+        if ($menuItem->afbeelding && Storage::disk('public')->exists($menuItem->afbeelding)) {
+            Storage::disk('public')->delete($menuItem->afbeelding);
         }
-    }
 
-    // Since image is always provided and required, store it directly on the public disk
-    $path = $request->afbeelding->store('menu_images', 'public');
-    $menuItem->afbeelding = 'app/public/' . $path; // Manually prepend 'app/public/'
+        // Store the new image
+        $path = $request->afbeelding->store('menu_images', 'public');
+        $menuItem->afbeelding = $path; // Store the relative path
+    }
 
     // Save the updated menu item
     $menuItem->save();
@@ -125,20 +124,16 @@ class MenuController extends Controller
     return redirect()->route('menu.index')->with('success', 'Item updated successfully.');
 }
 
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
+/**
+ * Remove the specified resource from storage.
+ */
+public function destroy($id)
 {
     $item = Menu::findOrFail($id);
 
-    if ($item->afbeelding) {
-        $oldPath = str_replace('app/public/', 'public/', $item->afbeelding); // Adjust the path if needed
-        if (Storage::exists($oldPath)) {
-            Storage::delete($oldPath);
-        }
+    // Delete the image if it exists
+    if ($item->afbeelding && Storage::disk('public')->exists($item->afbeelding)) {
+        Storage::disk('public')->delete($item->afbeelding);
     }
 
     $item->delete();

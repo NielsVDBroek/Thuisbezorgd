@@ -17,6 +17,9 @@
                 <div class="p-6 text-gray-900">
                     <button onclick="location.href='{{ route('menu.index') }}'">Items bekijken</button>
                 </div>
+                <div class="p-6 text-gray-900">
+                    <button onclick="location.href='{{ route('contact.contact-messages') }}'">Berichten bekijken</button>
+                </div>
             </div>
         </div>
     </div>
