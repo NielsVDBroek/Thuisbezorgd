@@ -12,9 +12,9 @@
     <title>Thuisbezorgd</title>
 </head>
 <body>
-    <div>
+    <header>
         @include('layouts.navigation')
-    </div>
+    </header>
     <main>
         <div class="menu-container">
             <div class="menu-container-title">Menu Items</div>
