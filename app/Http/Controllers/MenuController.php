@@ -141,4 +141,35 @@ public function destroy($id)
     return redirect()->route('menu.index')->with('success', 'Item deleted successfully');
 }
 
+public function search(Request $request)
+{
+    $query = $request->input('search');
+    $menuItems = Menu::where('naam', 'like', '%' . $query . '%')
+                    ->orWhere('beschrijving', 'like', '%' . $query . '%')
+                    ->get();
+
+    if ($menuItems->isEmpty()) {
+        return response()->json('<div>No items found for: ' . ($query) . '</div>');
+    }
+
+    $html = '';
+    foreach ($menuItems as $item) {
+        $html .= '<div class="menu-item shadow-sm">'.
+                 '<div class="menu-item-image-name-description">'.
+                 '<div class="menu-item-image-container">'.
+                 '<img src="' . asset('storage/' . $item->afbeelding) . '" alt="Menu Image">'.
+                 '</div>'.
+                 '<div class="menu-item-name-description">'.
+                 '<div class="menu-item-name">' . $item->naam . '</div>'.
+                 '<div class="menu-item-description">' . $item->beschrijving . '</div>'.
+                 '</div>'.
+                 '</div>'.
+                 '<div class="menu-item-price">€' . $item->prijs . '</div>'.
+                 '</div>';
+    }
+
+    return response()->json($html);
+}
+
+
 }

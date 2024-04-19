@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MenuController::class, 'main'])->name('home.main');
+Route::get('/search-menu-items', [MenuController::class, 'search'])->name('search_menu_items');
+
 // returns the form for adding a post
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/menu/items', [MenuController::class, 'index'])->name('menu.index');

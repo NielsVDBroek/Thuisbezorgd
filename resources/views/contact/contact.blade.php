@@ -18,12 +18,12 @@
     </header>
     <main>
         @if (auth()->check())
-            <form method="POST" action="{{ route('contact.store') }}" class="contact-form">
+            <form method="POST" action="{{ route('contact.store') }}" class="contact-form shadow-sm">
                 @csrf
                 <input type="hidden" name="name" value="{{ auth()->user()->name }}">
                 <input type="hidden" name="email" value="{{ auth()->user()->email }}">
         @else
-            <form method="POST" action="{{ route('contact.store') }}" class="contact-form">
+            <form method="POST" action="{{ route('contact.store') }}" class="contact-form shadow-sm">
                 @csrf
                 <div class="contact-form-input-field">
                     <label for="name">Name:</label>

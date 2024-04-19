@@ -38,7 +38,7 @@ main{
     width: 75%;
     display: flex;
     flex-direction: column;
-    gap: 3em
+    gap: 3em;
 }
 
 .menu-container-title{
@@ -50,6 +50,11 @@ main{
     display: flex;
     flex-direction: column;
     gap: 2em;
+}
+
+.menu-search-bar{
+    width: 50%;
+    border-radius: 10px !important;
 }
 
 .menu-item{
@@ -130,15 +135,14 @@ main{
     display: flex;
     flex-direction: column;
     gap: 2em;
+    background-color: white;
+    padding: 20px 40px 20px 40px;
+    border-radius: 15px;
 }
 
 .item-form-component{
     display: flex;
     flex-direction: column;
-}
-
-.menu-button{
-    color: red;
 }
 
 /* Contact form */
@@ -147,6 +151,9 @@ main{
     display: flex;
     flex-direction: column;
     gap:1em;
+    background-color: white;
+    padding: 20px 40px 20px 40px;
+    border-radius: 15px;
 }
 
 .contact-form-input-field{
@@ -183,4 +190,5 @@ main{
 .message-item-message-content{
     display: flex;
     flex-direction: column;
+    gap:1em;
 }

@@ -9,6 +9,22 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search-input').keyup(function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "{{ route('search_menu_items') }}",
+                    type: "GET",
+                    data: { 'search': query },
+                    success: function(data) {
+                        $('.menu-items').html(data);
+                    }
+                });
+            });
+        });
+    </script>
     <title>Thuisbezorgd</title>
 </head>
 <body>
@@ -17,7 +33,10 @@
     </div>
     <main>
         <div class="menu-container">
-            <div class="menu-container-title">Menu Items</div>
+            <div class="menu-container-title">
+                Menu Items
+            </div>
+            <input type="text" class="menu-search-bar" id="search-input" placeholder="Search items..." class="search-bar">             
             <div class="menu-items">
                 @foreach($menuItems as $item)
                     <div class="menu-item shadow-sm">
